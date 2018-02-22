@@ -1,4 +1,4 @@
-import jenkins
+from jenkins import Jenkins
 
 
 job_settings = {'DEPLOY_TO': 'feature1.dev.roundme.com',
@@ -12,6 +12,7 @@ job_settings = {'DEPLOY_TO': 'feature1.dev.roundme.com',
                 'MIGRATE': False,
                 'ENV': 'feature'}
 
+server = Jenkins('http://234234', username='234', password='234234')
 
 # serverstring
 print(server)
