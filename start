@@ -1,0 +1,5 @@
+export FLASK_APP=qajenkins.py
+
+flask db init                      - создание репозитория миграций - уже включено
+flask db migrate -m "комментарий"  - создать миграцию ДБ
+flask db upgrade                   - создаст базу/обновит существующую до актуальной

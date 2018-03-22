@@ -2,7 +2,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
-def configure_build(deploy_to, branch):
+def configure_build(deploy_to, branch, env):
     job_settings = {'DEPLOY_TO': deploy_to,
                     'FRONTEND_BRANCH': branch,
                     'BACKEND_BRANCH': branch,
@@ -12,7 +12,7 @@ def configure_build(deploy_to, branch):
                     'GRUNT_ARGS': 'testing',
                     'DEPLOY_TO_S3': False,
                     'MIGRATE': False,
-                    'ENV': 'feature'}
+                    'ENV': env}
     return job_settings
 
 
@@ -21,8 +21,8 @@ jenkins_user = '23123'
 jenkins_pass = '123123123'
 
 
-# servers = {'feature1': ('feature1.dev.roundme.com', '1.6.1'),
-#            'feature2': ('feature2.dev.roundme.com', '1.6.1')}
+servers = {'feature1': ('feature1.address.com', 'branch', 'env'),
+           'feature2': ('feature2.address.com', 'branch', 'env')}
 
 
 class Config(object):

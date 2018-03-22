@@ -1,0 +1,45 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Yandex Mail Manager</title>
+        {% else %}
+        <title>Yandex Mail Manager</title>
+        {% endif %}
+        <link rel="stylesheet" href="/static/base.css">
+    </head>
+    <body>
+
+        <center>
+            <div class="header">
+                <h2>Yandex Mail for Domains - Admin Console</h2>
+                <div class="flex-cont-space-around">
+                    <div>
+                        <a href="/mails">All</a>
+                    </div>
+
+                    {% for company in companies %}
+                        <div>
+                            <a href="/mails/{{ company }}">{{ company }} </a>
+                        </div>
+                    {% endfor %}
+                    <div class="flex-right">
+                        <div>
+                            <a href="/messages"><img src="/static/images/logs.png" title="Logs" alt="Logs"></a>
+                        </div>
+                        <div>
+                            <a href="/new"><img src="/static/images/new.png" title="New User" alt="New User"></a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="header">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="header">
+                <hr>
+            </div>
+
+        </center>
+    </body>
+</html>

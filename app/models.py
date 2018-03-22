@@ -2,6 +2,7 @@ from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+""" It's for future, now i don't use db for project"""
 
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,7 +22,7 @@ class Servers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(64), index=True, unique=True)
     branch = db.Column(db.String(64))
-
+    env = db.Column(db.String(64))
     def get_server(self, address, branch):
         self.address = address
         self.branch = branch
