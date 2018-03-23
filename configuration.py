@@ -22,8 +22,11 @@ jenkins_pass = '123123123'
 
 
 servers = {'feature1': ('feature1.address.com', 'branch', 'env'),
-           'feature2': ('feature2.address.com', 'branch', 'env')}
+           'feature2': ('feature2.address.com', 'branch', 'env'),
+           'test': ('test.address.com', 'branch', 'env'),
+           'preproduction': ('preproduction.address.com', 'branch', 'env')}
 
+storybook_server = 'http://storybook.dev.roundme.com/'
 
 class Config(object):
     SECRET_KEY = 'omg-its-really-secret'

@@ -23,6 +23,7 @@ class Servers(db.Model):
     address = db.Column(db.String(64), index=True, unique=True)
     branch = db.Column(db.String(64))
     env = db.Column(db.String(64))
+
     def get_server(self, address, branch):
         self.address = address
         self.branch = branch

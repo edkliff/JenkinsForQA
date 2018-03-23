@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h3>Servers</h3>
+	<div class="container clearfix">
+        <table>
+            <tr>
+
+                    <td> <b>Tag</b> </td>
+                    <td> <b>Server</b> </td>
+                    <td> <b>Env</b> </td>
+                    <td></td>
+
+            </tr>
+		{% for server in servers %}
+
+            <tr>
+                <td> {{ server }} </td>
+                <td> {{servers[server][0]}} </td>
+                <td> {{servers[server][2]}} </td>
+                <td><a href="/run/{{ server }}"><img src="/static/images/go.png" title="Build" alt="Build"></a></td>
+            </tr>
+
+		{% endfor %}
+        </table>
+	</div>
+
+{% endblock %}

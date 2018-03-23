@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h3> Storybooks </h3>
+	<div class="container clearfix">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.branch }}
+                {{ form.submit }}
+            </div>
+        </form>
+        <br>
+		{% for storybook in storybooks %}
+            <div class="contentBlock"><a href="{{storyserver}}{{storybook}}">{{ storybook }}</a></div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

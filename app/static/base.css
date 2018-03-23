@@ -93,3 +93,21 @@ select {
     max-width: 1024px;
     background: #E0DDDD;
 }
+
+.container {
+    width:900px;
+}
+
+.contentBlock {
+    width: 200px;
+    float:left;
+    /* Высота и outline не обязательны */
+    height: 50px;
+
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
