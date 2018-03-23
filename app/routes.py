@@ -1,7 +1,7 @@
 from app import app
 from flask import redirect, render_template
 from app.forms import BuildStorybook
-from app.functions import get_storybooks, build_storybook
+from app.functions import get_storybooks, build_storybook, start_job
 from configuration import storybook_server, servers
 
 @app.route('/')
@@ -34,3 +34,9 @@ def storybooks():
 @app.route('/servers')
 def servers_list():
     return render_template('servers.html', title='Servers', servers=servers)
+
+@app.route('/run/<server>', methods=['GET', 'POST'])
+def edit_account(server):
+    start_job(server, 'Roundme.Full.Build')
+    print(servers[server])
+    return redirect('/servers')

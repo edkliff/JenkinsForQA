@@ -16,9 +16,12 @@ def configure_build(deploy_to, branch, env):
     return job_settings
 
 
+
 jenkins_server = 'http://123123'
 jenkins_user = '23123'
 jenkins_pass = '123123123'
+
+
 
 
 servers = {'feature1': ('feature1.address.com', 'branch', 'env'),
