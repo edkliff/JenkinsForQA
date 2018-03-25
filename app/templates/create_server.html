@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h3> Create Server </h3>
+	<div class="container clearfix">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <table>
+                <tr class="no_border">
+                    <td>{{ form.label.label }}</td>
+                    <td>{{ form.label }}</td>
+                </tr>
+                <tr class="no_border">
+                    <td>{{ form.address.label }}</td>
+                    <td>{{ form.address }}</td>
+                </tr>
+                <tr class="no_border">
+                    <td>{{ form.branch.label }}</td>
+                    <td>{{ form.branch }}</td>
+                </tr>
+                <tr class="no_border">
+                    <td>{{ form.env.label }}</td>
+                    <td>{{ form.env }}</td>
+                </tr>
+                <tr class="no_border">
+                    <td></td>
+                    <td>{{ form.submit }}</td>
+                </tr>
+            </table>
+        </form>
+        <br>
+	</div>
+
+{% endblock %}

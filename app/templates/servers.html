@@ -3,6 +3,11 @@
 {% block content %}
 
 	<h3>Servers</h3>
+     <div class="flex-right">
+        <div>
+            <a href="/add">Add</a>
+        </div>
+    </div>
 	<div class="container clearfix">
         <table>
             <tr>
@@ -10,6 +15,7 @@
                     <td> <b>Tag</b> </td>
                     <td> <b>Server</b> </td>
                     <td> <b>Env</b> </td>
+                    <td></td>
                     <td></td>
 
             </tr>
@@ -19,6 +25,7 @@
                 <td> {{ server }} </td>
                 <td> {{servers[server][0]}} </td>
                 <td> {{servers[server][2]}} </td>
+                <td><a href="/edit/{{ server }}"><img src="/static/images/settings.png" title="Settings" alt="Settings"></a></td>
                 <td><a href="/run/{{ server }}"><img src="/static/images/go.png" title="Build" alt="Build"></a></td>
             </tr>
 

@@ -1,18 +1,26 @@
 from jenkins import Jenkins
 from configuration import configure_build, jenkins_server, jenkins_user, jenkins_pass, storybook_server, servers
-# from app import models
+from app import models, db
 import requests
 
-def start_job(server_id, job_name):
-    # job_data = models.Servers.query.filter_by(id=server_id).first()
-    job_data = servers[server_id]
-    job_settings = configure_build(job_data[0],
-                                   job_data[1],
-                                   job_data[2])
+
+def start_job(server_label, job_name):
+    job_data = models.Servers.query.filter_by(label=server_label).first()
+    job_settings = configure_build(job_data.address,
+                                   job_data.branch,
+                                   job_data.env)
     server = Jenkins(jenkins_server, jenkins_user, jenkins_pass)
     server.build_job(job_name, job_settings)
-    print(job_data)
     return "task planned"
+
+
+def list_servers():
+    servers_response = models.Servers.query.all()
+    servers_dict = {}
+    for e in servers_response:
+        server = {e.label: (e.address, e.branch, e.env)}
+        servers_dict.update(server)
+    return servers_dict
 
 
 def build_storybook(branch):
@@ -21,12 +29,20 @@ def build_storybook(branch):
     server.build_job('Roundme.StoryBook.Build', job_settings)
 
 
-def edit_server(server_id, deploy_to, branch):
-    print("Job Edit {} {} {}".format(server_id, deploy_to, branch))
+def write_server(server_info):
+    db.session.add(server_info)
+    db.session.commit()
+    # print("Job Edit {} {} {}".format(server_id, deploy_to, branch))
 
 
-def create_server(deploy_to, branch):
-    print("Job Create {} {}".format(deploy_to, branch))
+def create_server(server_label, deploy_to, branch, env):
+    job_data = models.Servers()
+    job_data.label = server_label
+    job_data.address = deploy_to
+    job_data.branch = branch
+    job_data.env = env
+    write_server(job_data)
+
 
 
 def create_user(username):

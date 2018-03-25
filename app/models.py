@@ -4,6 +4,7 @@ from flask_login import UserMixin
 
 """ It's for future, now i don't use db for project"""
 
+
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -20,7 +21,8 @@ class Users(UserMixin, db.Model):
 
 class Servers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(64), index=True, unique=True)
+    label = db.Column(db.String(64), unique=True)
+    address = db.Column(db.String(64))
     branch = db.Column(db.String(64))
     env = db.Column(db.String(64))
 
